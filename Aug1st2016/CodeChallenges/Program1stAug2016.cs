@@ -14,7 +14,7 @@ namespace CodeChallenges
             string[] tokens = Console.ReadLine().Split(',');
             int[] values = Array.ConvertAll(tokens, Int32.Parse);
             bool result =program.isSame(values);
-            Console.WriteLine(result ? "YES" : "NO");
+            Console.WriteLine("TEST CASE:" + (result ? "PASSED" : "FAILED"));
         }
 
         public bool isSame(int[] values)
