@@ -1,7 +1,0 @@
-C:\Users\pilla\Desktop\CodeChallenges\CodeChallengesTest\bin\Debug\CodeChallengesTest.dll
-C:\Users\pilla\Desktop\CodeChallenges\CodeChallengesTest\bin\Debug\CodeChallengesTest.pdb
-C:\Users\pilla\Desktop\CodeChallenges\CodeChallengesTest\bin\Debug\CodeChallenges.exe
-C:\Users\pilla\Desktop\CodeChallenges\CodeChallengesTest\bin\Debug\CodeChallenges.pdb
-C:\Users\pilla\Desktop\CodeChallenges\CodeChallengesTest\obj\Debug\CodeChallengesTest.csprojResolveAssemblyReference.cache
-C:\Users\pilla\Desktop\CodeChallenges\CodeChallengesTest\obj\Debug\CodeChallengesTest.dll
-C:\Users\pilla\Desktop\CodeChallenges\CodeChallengesTest\obj\Debug\CodeChallengesTest.pdb
