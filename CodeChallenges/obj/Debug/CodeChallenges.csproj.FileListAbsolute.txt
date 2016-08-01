@@ -1,0 +1,6 @@
+C:\Users\pilla\Desktop\CodeChallenges\CodeChallenges\bin\Debug\CodeChallenges.exe.config
+C:\Users\pilla\Desktop\CodeChallenges\CodeChallenges\bin\Debug\CodeChallenges.exe
+C:\Users\pilla\Desktop\CodeChallenges\CodeChallenges\bin\Debug\CodeChallenges.pdb
+C:\Users\pilla\Desktop\CodeChallenges\CodeChallenges\obj\Debug\CodeChallenges.csprojResolveAssemblyReference.cache
+C:\Users\pilla\Desktop\CodeChallenges\CodeChallenges\obj\Debug\CodeChallenges.exe
+C:\Users\pilla\Desktop\CodeChallenges\CodeChallenges\obj\Debug\CodeChallenges.pdb
