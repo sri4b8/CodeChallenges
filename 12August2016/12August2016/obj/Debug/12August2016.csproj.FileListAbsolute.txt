@@ -1,0 +1,12 @@
+C:\Users\pilla\Desktop\12August2016\12August2016\bin\Debug\12August2016.exe.config
+C:\Users\pilla\Desktop\12August2016\12August2016\bin\Debug\12August2016.exe
+C:\Users\pilla\Desktop\12August2016\12August2016\bin\Debug\12August2016.pdb
+C:\Users\pilla\Desktop\12August2016\12August2016\obj\Debug\12August2016.csprojResolveAssemblyReference.cache
+C:\Users\pilla\Desktop\12August2016\12August2016\obj\Debug\12August2016.exe
+C:\Users\pilla\Desktop\12August2016\12August2016\obj\Debug\12August2016.pdb
+D:\CodeChallenges\12August2016\12August2016\bin\Debug\12August2016.exe.config
+D:\CodeChallenges\12August2016\12August2016\obj\Debug\12August2016.exe
+D:\CodeChallenges\12August2016\12August2016\obj\Debug\12August2016.pdb
+D:\CodeChallenges\12August2016\12August2016\bin\Debug\12August2016.exe
+D:\CodeChallenges\12August2016\12August2016\bin\Debug\12August2016.pdb
+D:\CodeChallenges\12August2016\12August2016\obj\Debug\12August2016.csprojResolveAssemblyReference.cache
