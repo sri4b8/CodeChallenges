@@ -32,98 +32,113 @@ namespace _12August2016
             string message = string.Empty;
             List<int> numSps = new List<int>();
             int numSp = 1;
-            //getting white spaces indexs (numsp) and remove space from the message
-            foreach (char c in input)
+            try
             {
-                if (c == ' ')
+                //getting white spaces indexs (numsp) and remove space from the message
+                foreach (char c in input)
                 {
-                    numSps.Add(numSp);
-
-                }
-                else
-                {
-                    numSp++;
-                    message = message + c.ToString();
-                }
-            }
-
-            int l = message.Length;//length of the message excluding spaces
-
-            int squareRoot = (int)Math.Sqrt(l);
-            int columns = squareRoot;
-            int rows = squareRoot;
-
-            columns = (rows * columns >= l) ? columns : columns + 1;
-
-            rows = (rows * columns >= l) ? rows : rows + 1;
-
-            string[] encryptedMessage = new string[rows];
-            int index = 0;
-
-            // spliting message into rows
-            for (int i = 0; i < rows - 1; i++)
-            {
-                encryptedMessage[i] = message.Substring(index, columns);
-                index += columns;
-            }
-
-            encryptedMessage[rows - 1] = message.Substring(index); //we are adding last row at end because last row might have different column size
-
-            string[] finalMessage = new string[columns];
-
-
-            for (int k = 0; k < columns; k++)
-            {
-                for (int i = 0; i < rows; i++)
-                {
-                    if (encryptedMessage[i].Length > k)
+                    if (c == ' ')
                     {
-                        finalMessage[k] += encryptedMessage[i][k]; // adding same columns in a different rows 
+                        numSps.Add(numSp);
+
+                    }
+                    else
+                    {
+                        numSp++;
+                        message = message + c.ToString();
                     }
                 }
+
+                int l = message.Length;//length of the message excluding spaces
+
+                int squareRoot = (int)Math.Sqrt(l);
+                int columns = squareRoot;
+                int rows = squareRoot;
+
+                columns = (rows * columns >= l) ? columns : columns + 1;
+
+                rows = (rows * columns >= l) ? rows : rows + 1;
+
+                string[] encryptedMessage = new string[rows];
+                int index = 0;
+
+                // spliting message into rows
+                for (int i = 0; i < rows - 1; i++)
+                {
+                    encryptedMessage[i] = message.Substring(index, columns);
+                    index += columns;
+                }
+
+                encryptedMessage[rows - 1] = message.Substring(index); //we are adding last row at end because last row might have different column size
+
+                string[] finalMessage = new string[columns];
+
+
+                for (int k = 0; k < columns; k++)
+                {
+                    for (int i = 0; i < rows; i++)
+                    {
+                        if (encryptedMessage[i].Length > k)
+                        {
+                            finalMessage[k] += encryptedMessage[i][k]; // adding same columns in a different rows 
+                        }
+                    }
+                }
+
+
+                return string.Join(" ", finalMessage) + " numsp " + String.Join(" ", numSps); // adding spaces in beetween encrypted codes and added white space positions
+
             }
-
-
-            return string.Join(" ", finalMessage) + " numsp " + String.Join(" ", numSps); // adding spaces in beetween encrypted codes and added white space positions
-
+            catch (Exception ex)
+            {
+                return "Error :" + ex.Message;
+            }
         }
 
         // get decrypted message         
         public string DecryptMessage(string input)
         {
-            string[] inputs = Regex.Split(input, " numsp ");// spliting input to get encrypted message and white space indexs
-            string message = inputs[0];
-            string numsp = inputs[1];
-
-            string[] encryptedMessage = message.Split(' ');//splting encrypted array
-            int rows = encryptedMessage[0].Length;
-            int columns = encryptedMessage.Length;
-
-            string[] decryptedMessageArray = new string[rows];
-
-
-            for (int k = 0; k < rows; k++)
+            try
             {
-                for (int i = 0; i < columns; i++)
+                string[] inputs = Regex.Split(input, " numsp ");// spliting input to get encrypted message and white space indexs
+                string message = inputs[0];
+                string numsp = inputs[1];
+
+                string[] encryptedMessage = message.Split(' ');//splting encrypted array
+                int rows = encryptedMessage[0].Length;
+                int columns = encryptedMessage.Length;
+
+                string[] decryptedMessageArray = new string[rows];
+
+
+                for (int k = 0; k < rows; k++)
                 {
-                    if (encryptedMessage[i].Length > k)
+                    for (int i = 0; i < columns; i++)
                     {
-                        decryptedMessageArray[k] += encryptedMessage[i][k]; // adding same row values in a different columns 
+                        if (encryptedMessage[i].Length > k)
+                        {
+                            decryptedMessageArray[k] += encryptedMessage[i][k]; // adding same row values in a different columns 
+                        }
                     }
                 }
+
+                string decryptedMessage = string.Join("", decryptedMessageArray);//merging all decrypted codes
+
+                string[] numsps = numsp.Split(' ');
+
+                for (int p = 0; p < numsps.Length; p++)
+                {
+                    decryptedMessage = decryptedMessage.Insert(Convert.ToInt16(numsps[p]) - 1 + p, " "); // adding spaces in decrypted message
+                }
+
+                return string.Join(" ", decryptedMessage);
+
             }
 
-            string decryptedMessage = string.Join("", decryptedMessageArray);//merging all decrypted codes
-
-            string[] numsps = numsp.Split(' ');
-
-            for (int p = 0; p < numsps.Length; p++)
+            catch (Exception ex)
             {
-                decryptedMessage = decryptedMessage.Insert(Convert.ToInt16(numsps[p]) - 1 + p, " "); // adding spaces in decrypted message
+                return "Error :" + ex.Message;
             }
-
-            return string.Join(" ", decryptedMessage);
-
         }
     }
 }
