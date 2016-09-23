@@ -1,0 +1,12 @@
+D:\CodeChallenges\10thSeptember2016\10thSeptember2016\bin\Debug\10thSeptember2016.exe.config
+D:\CodeChallenges\10thSeptember2016\10thSeptember2016\bin\Debug\10thSeptember2016.exe
+D:\CodeChallenges\10thSeptember2016\10thSeptember2016\bin\Debug\10thSeptember2016.pdb
+D:\CodeChallenges\10thSeptember2016\10thSeptember2016\obj\Debug\10thSeptember2016.csprojResolveAssemblyReference.cache
+D:\CodeChallenges\10thSeptember2016\10thSeptember2016\obj\Debug\10thSeptember2016.exe
+D:\CodeChallenges\10thSeptember2016\10thSeptember2016\obj\Debug\10thSeptember2016.pdb
+E:\Srikanth Pilla\CodeChallenges\10thSeptember2016\10thSeptember2016\bin\Debug\10thSeptember2016.exe.config
+E:\Srikanth Pilla\CodeChallenges\10thSeptember2016\10thSeptember2016\obj\Debug\10thSeptember2016.exe
+E:\Srikanth Pilla\CodeChallenges\10thSeptember2016\10thSeptember2016\obj\Debug\10thSeptember2016.pdb
+E:\Srikanth Pilla\CodeChallenges\10thSeptember2016\10thSeptember2016\bin\Debug\10thSeptember2016.exe
+E:\Srikanth Pilla\CodeChallenges\10thSeptember2016\10thSeptember2016\bin\Debug\10thSeptember2016.pdb
+E:\Srikanth Pilla\CodeChallenges\10thSeptember2016\10thSeptember2016\obj\Debug\10thSeptember2016.csprojResolveAssemblyReference.cache
