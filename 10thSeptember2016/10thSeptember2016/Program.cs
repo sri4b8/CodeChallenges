@@ -34,8 +34,12 @@ namespace _10thSeptember2016
                 }
             }
             Program prog=new Program();
-            var path = prog.FindShortestPath(matrix, 4, 4, startPoint, endPoint);
-            Console.WriteLine(path.Count>0? "YES " + (path.Count+1):"NO");
+            List<Point> resultPath=new List<Point>();
+            if (matrix[startPoint.x, startPoint.y] == 1 && matrix[endPoint.x, endPoint.y] == 1)
+            {
+                resultPath = prog.FindShortestPath(matrix, 4, 4, startPoint, endPoint);
+            }
+            Console.WriteLine(resultPath.Count>0? "YES " + (resultPath.Count+1):"NO");
             Console.ReadKey();
         }
         public class Point
