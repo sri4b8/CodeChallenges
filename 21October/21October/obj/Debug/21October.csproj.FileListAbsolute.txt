@@ -4,3 +4,9 @@ E:\Srikanth Pilla\21October\21October\bin\Debug\21October.pdb
 E:\Srikanth Pilla\21October\21October\obj\Debug\21October.csprojResolveAssemblyReference.cache
 E:\Srikanth Pilla\21October\21October\obj\Debug\21October.exe
 E:\Srikanth Pilla\21October\21October\obj\Debug\21October.pdb
+E:\Srikanth Pilla\CodeChallenges\21October\21October\bin\Debug\21October.exe.config
+E:\Srikanth Pilla\CodeChallenges\21October\21October\obj\Debug\21October.exe
+E:\Srikanth Pilla\CodeChallenges\21October\21October\obj\Debug\21October.pdb
+E:\Srikanth Pilla\CodeChallenges\21October\21October\bin\Debug\21October.exe
+E:\Srikanth Pilla\CodeChallenges\21October\21October\bin\Debug\21October.pdb
+E:\Srikanth Pilla\CodeChallenges\21October\21October\obj\Debug\21October.csprojResolveAssemblyReference.cache

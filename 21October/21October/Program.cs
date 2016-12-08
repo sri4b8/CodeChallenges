@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using _21October.Dispensers;
@@ -12,23 +13,48 @@ namespace _21October
     {
         public static void Main(string[] args)
         {
-            //using  Abstract Factory Design Pattern 
-            CheckStatus();
-        }
-
-     
-        public static void CheckStatus()
-        {
-            Console.WriteLine("Select 1.deposit  2.withdraw   3.BalanceEnquiry");
+            Console.WriteLine("Select 1.Deposit  2.Withdraw   3.BalanceEnquiry");
             OperationType operationType = (OperationType)Convert.ToInt16(Console.ReadLine());
 
             Console.WriteLine("Select Account type - 1.Active  2.Closed  3.In-Operative");
-            AccountType accountType =(AccountType)Convert.ToInt16(Console.ReadLine());
+            AccountType accountType = (AccountType)Convert.ToInt16(Console.ReadLine());
+
+            //achieving the solution using two types of Pattern 1.Abstract Factory Design Pattern  2.State Pattern
+
+            //using State Pattern
+            GetStatusUsingStatePattern(accountType, operationType);
+
+            //using  Abstract Factory Design Pattern 
+            GetStatusUsingAbFactoryPattern(accountType, operationType);
+
+        }
+
+
+        public static void GetStatusUsingStatePattern(AccountType accountType, OperationType operationType)
+        {
+
+            Context context = new Context(new ActiveState());
+            context.Request(operationType);
+
+            //  var accountState = context.State;
+            bool validOperation = context.ValidOperation;
+            string AccountType = context.State.GetAccountType(context).ToString();
+
+            Console.WriteLine(validOperation.ToString());
+            Console.WriteLine(AccountType);
+
+            Console.WriteLine("Press Enter to Exit");
+            Console.ReadLine();
+
+        }
+        public static void GetStatusUsingAbFactoryPattern(AccountType accountType, OperationType operationType)
+        {
+
 
             ATMProcess process = new ATMProcess();
             var type = process.GetOperation(accountType);
-            string resultAccountType=string.Empty;
-            bool validOperation=false;
+            string resultAccountType = string.Empty;
+            bool validOperation = false;
 
             switch (operationType)
             {
@@ -54,7 +80,6 @@ namespace _21October
 
             Console.ReadLine();
         }
-
 
         public static void WithdrawAmmount()
         {
@@ -85,6 +110,137 @@ namespace _21October
 
     }
 
+    #region StatePattern
+
+    public interface StateBase
+    {
+        void BalanceEnquiry(Context context);
+
+        void Withdraw(Context context);
+
+        void Deposite(Context context);
+
+        AccountType GetAccountType(Context context);
+
+    }
+    public class Context
+    {
+        public Context(StateBase state)
+        {
+            State = state;
+        }
+
+        public StateBase State { get; set; }
+
+        public bool ValidOperation { get; set; }
+
+        /// <summary>
+        /// State change request
+        /// </summary>
+        public void Request(OperationType operationType)
+        {
+            switch (operationType)
+            {
+                case OperationType.BalanceEnquiry:
+                    State.BalanceEnquiry(this);
+                    break;
+                case OperationType.Deposite:
+                    State.Deposite(this);
+                    break;
+                case OperationType.Withdraw:
+                    State.Withdraw(this);
+                    break;
+            }
+
+        }
+
+
+    }
+
+    public class ActiveState : StateBase
+    {
+        public void BalanceEnquiry(Context context)
+        {
+            context.State = new ActiveState();
+            context.ValidOperation = true;
+        }
+
+        public void Withdraw(Context context)
+        {
+            context.State = new ActiveState();
+            context.ValidOperation = true;
+        }
+
+        public void Deposite(Context context)
+        {
+            context.State = new ActiveState();
+            context.ValidOperation = true;
+        }
+
+        public AccountType GetAccountType(Context context)
+        {
+            return AccountType.Active;
+        }
+    }
+
+    public class InOperativeState : StateBase
+    {
+        public void BalanceEnquiry(Context context)
+        {
+            context.State = new InOperativeState();
+            context.ValidOperation = true;
+        }
+
+        public void Withdraw(Context context)
+        {
+            context.State = new ActiveState();
+            context.ValidOperation = true;
+        }
+
+        public void Deposite(Context context)
+        {
+            context.State = new ActiveState();
+            context.ValidOperation = true;
+        }
+
+        public AccountType GetAccountType(Context context)
+        {
+            return AccountType.InOperative;
+        }
+    }
+
+    public class CloseState : StateBase
+    {
+        public void BalanceEnquiry(Context context)
+        {
+            context.State = new CloseState();
+            context.ValidOperation = true;
+
+        }
+
+        public void Withdraw(Context context)
+        {
+            context.State = new CloseState();
+            context.ValidOperation = false;
+        }
+
+        public void Deposite(Context context)
+        {
+            context.State = new CloseState();
+            context.ValidOperation = false;
+        }
+
+        public AccountType GetAccountType(Context context)
+        {
+            return AccountType.Close;
+
+        }
+    }
+
+    #endregion
+
+
+    #region // Abstract Factory Pattern
     public class ATMProcess
     {
         public IATM GetOperation(AccountType type)
@@ -190,10 +346,10 @@ namespace _21October
     public class Deposite : IDeposit
     {
         private AccountType accountType;
-      public  Deposite(AccountType type)
-      {
-          accountType = type;
-      }
+        public Deposite(AccountType type)
+        {
+            accountType = type;
+        }
         public string GetAccountStatus()
         {
             switch (accountType)
@@ -301,20 +457,20 @@ namespace _21October
         }
     }
 
+    #endregion
 
-  
 
     public enum AccountType
     {
-        Active=1,
-        Close=2,
-            InOperative=3
+        Active = 1,
+        Close = 2,
+        InOperative = 3
     }
 
     public enum OperationType
     {
-        Deposite=1,
-        Withdraw=2,
-        BalanceEnquiry=3
+        Deposite = 1,
+        Withdraw = 2,
+        BalanceEnquiry = 3
     }
 }
