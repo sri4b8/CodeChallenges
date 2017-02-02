@@ -13,8 +13,15 @@ namespace _16Jan2016
         {
             try
             {
+                List<ITransaction> transactions = new List<ITransaction>();
+
                 Console.WriteLine("Select AccountType: 1.GoldAccount  2.Diamond account 3.Platinum account");
                 string accountType = Console.ReadLine();
+                transactions.Add(new ChangeAccount
+                {
+                    AccountType = GetAccountType(accountType)
+                });
+
                 Console.WriteLine("Select Account State:1.Active 2.Close 3.I-Operative");
                 string accountState = Console.ReadLine();
                 Console.WriteLine("Initial Balance:");
@@ -23,7 +30,6 @@ namespace _16Jan2016
 
                 BankAccount bankAccount = new BankAccount();
                 bool isprocess = true;
-                List<ITransaction> transactions = new List<ITransaction>();
                 while (isprocess)
                 {
                     Console.WriteLine(
@@ -36,7 +42,6 @@ namespace _16Jan2016
                             transactions.Add(new Deposite
                             {
                                 DepositeAmount = Convert.ToDecimal(Console.ReadLine()),
-                                AccountType = GetAccountType(accountType)
                             });
                             break;
                         case "2":
@@ -45,12 +50,15 @@ namespace _16Jan2016
                             transactions.Add(new Withdraw
                             {
                                 WithdrawAmount = Convert.ToDecimal(Console.ReadLine()),
-                                AccountType = GetAccountType(accountType)
                             });
                             break;
                         case "3":
                             Console.WriteLine("Select AccountType: 1.GoldAccount  2.Diamond account 3.Platinum account");
                             accountType = Console.ReadLine();
+                            transactions.Add(new ChangeAccount
+                            {
+                                AccountType = GetAccountType(accountType)
+                            });
                             break;
                         default:
                             isprocess = false;
@@ -63,6 +71,8 @@ namespace _16Jan2016
 
                 var totalBalanceVisitor = new TotalBalanceVisitor(GetAccountState(accountState),
                     InitialBalance);
+
+
 
                 bankAccount.Accept(totalBalanceVisitor);
 

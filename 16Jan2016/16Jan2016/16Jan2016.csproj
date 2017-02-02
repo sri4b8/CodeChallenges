@@ -61,6 +61,8 @@
     <Compile Include="Account.cs" />
     <Compile Include="AccountTypes\AccountTypeService.cs" />
     <Compile Include="AccountStates\ActiveState.cs" />
+    <Compile Include="Operations\ChangeAccount.cs" />
+    <Compile Include="InterestCalculatorVisitor.cs" />
     <Compile Include="Operations\BalanceEnquiry.cs" />
     <Compile Include="CashBackVistor.cs" />
     <Compile Include="AccountStates\ClosedState.cs" />

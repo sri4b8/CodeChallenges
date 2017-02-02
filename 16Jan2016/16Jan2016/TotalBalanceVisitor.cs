@@ -24,22 +24,24 @@ namespace _16Jan2016
         }
         public void visit(Deposite deposite)
         {
-            Account.AccountType = deposite.AccountType;
             Account.Deposit(deposite.DepositeAmount);
 
         }
 
         public void visit(Withdraw withdraw)
         {
-            Account.AccountType = withdraw.AccountType;
-
             Account.Withdraw(withdraw.WithdrawAmount);
-
         }
+
 
         public void visit(BalanceEnquiry balanceEnquiry)
         {
             throw new NotImplementedException();
+        }
+
+        public void visit(ChangeAccount changeAccount)
+        {
+            Account.ChangeAccountType(changeAccount.AccountType);
         }
     }
 }

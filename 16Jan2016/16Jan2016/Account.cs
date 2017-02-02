@@ -5,7 +5,7 @@ namespace _16Jan2016
 {
     public class Account
     {
-
+        public decimal Interest { get; set; }
         public decimal Balance { get; set; }
 
         public decimal CashBack { get; private set; }
@@ -53,7 +53,12 @@ namespace _16Jan2016
             });
         }
 
+        public void ChangeAccountType(IAccountType accountType)
+        {
+           // Interest = +accountType.CalculateInterest(this.Balance);
 
+            this.AccountType = accountType;
+        }
         public void Close()
         {
             this.State = this.State.Close();

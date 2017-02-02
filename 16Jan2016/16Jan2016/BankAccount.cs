@@ -18,7 +18,6 @@ namespace _16Jan2016
                 transaction.Accept(transactionVisitor);
             }
 
-           // throw new NotImplementedException();
         }
     }
 }

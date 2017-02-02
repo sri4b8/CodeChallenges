@@ -12,5 +12,7 @@ namespace _16Jan2016
         void visit(Withdraw withdraw);
 
         void visit(BalanceEnquiry balanceEnquiry);
+
+        void visit(ChangeAccount accountType);
     }
 }

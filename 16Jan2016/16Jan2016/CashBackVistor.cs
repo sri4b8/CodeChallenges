@@ -24,6 +24,11 @@ namespace _16Jan2016
             //throw new NotImplementedException();
         }
 
+        public void visit(ChangeAccount accountType)
+        {
+            throw new NotImplementedException();
+        }
+
         public void visit(Withdraw withdraw)
         {
 
