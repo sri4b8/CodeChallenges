@@ -18,6 +18,13 @@ namespace _16Jan2016
             return this;
         }
 
+        public IAccountState CalculateInterst(Action InterestCalculation)
+        {
+            InterestCalculation();
+            return this;
+        }
+
+
         public IAccountState InOperative() => new InOperativeState();
         public IAccountState Close() => new ClosedState();
         public IAccountState Active() => this;

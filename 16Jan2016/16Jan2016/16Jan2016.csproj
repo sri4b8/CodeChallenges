@@ -58,13 +58,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Account.cs" />
+    <Compile Include="AccountManager.cs" />
     <Compile Include="AccountTypes\AccountTypeService.cs" />
     <Compile Include="AccountStates\ActiveState.cs" />
+    <Compile Include="AccountTypes\AccountTypeUtil.cs" />
+    <Compile Include="Operations\AddInterest.cs" />
+    <Compile Include="Operations\AddAccount.cs" />
     <Compile Include="Operations\ChangeAccount.cs" />
-    <Compile Include="InterestCalculatorVisitor.cs" />
     <Compile Include="Operations\BalanceEnquiry.cs" />
-    <Compile Include="CashBackVistor.cs" />
     <Compile Include="AccountStates\ClosedState.cs" />
     <Compile Include="Operations\Deposite.cs" />
     <Compile Include="AccountTypes\DiamondAccount.cs" />

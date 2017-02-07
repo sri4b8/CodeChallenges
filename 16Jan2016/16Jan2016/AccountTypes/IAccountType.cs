@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _16Jan2016
+﻿namespace _16Jan2016.AccountTypes
 {
     public interface IAccountType
     {
         decimal CalculateCashBack(decimal amount);
 
-        decimal CalculateInterest(decimal amount);
+        decimal CalculateInterest(decimal amount,double NoOfDays);
 
         decimal CalculatePenlaty(decimal balanceAmount);
 

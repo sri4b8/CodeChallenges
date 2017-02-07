@@ -6,6 +6,9 @@ namespace _16Jan2016
     {
         IAccountState Deposit(Action addToBalance);
         IAccountState Withdraw(Action subtractFromBalance);
+
+        IAccountState CalculateInterst(Action InterestCalculation);
+
         IAccountState InOperative();
         IAccountState Close();
 

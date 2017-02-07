@@ -16,6 +16,9 @@ namespace _16Jan2016
             throw new AccountClosedException();
         }
 
+        public IAccountState CalculateInterst(Action InterestCalculation) => this;
+
+
         public IAccountState InOperative() => this;
         public IAccountState Close() => this;
 

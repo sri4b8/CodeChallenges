@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using _16Jan2016.AccountTypes;
 using _16Jan2016.Exceptions;
+using _16Jan2016.Operations;
 
 namespace _16Jan2016
 {
@@ -17,19 +19,27 @@ namespace _16Jan2016
 
                 Console.WriteLine("Select AccountType: 1.GoldAccount  2.Diamond account 3.Platinum account");
                 string accountType = Console.ReadLine();
-                transactions.Add(new ChangeAccount
-                {
-                    AccountType = GetAccountType(accountType)
-                });
 
                 Console.WriteLine("Select Account State:1.Active 2.Close 3.I-Operative");
                 string accountState = Console.ReadLine();
                 Console.WriteLine("Initial Balance:");
                 decimal InitialBalance = Convert.ToDecimal(Console.ReadLine());
+                Console.WriteLine("Account Open Date:");
+                DateTime accountOpenDate = Convert.ToDateTime(Console.ReadLine());
 
+                transactions.Add(new AddAccount
+                {
+                    AccountState = GetAccountState(accountState),
+                    AccountType = GetAccountType(accountType),
+                    TransactionDate = accountOpenDate,
+                    InitialBalance = InitialBalance
+
+                });
 
                 BankAccount bankAccount = new BankAccount();
                 bool isprocess = true;
+                decimal amount;
+                DateTime transactionDate;
                 while (isprocess)
                 {
                     Console.WriteLine(
@@ -39,29 +49,43 @@ namespace _16Jan2016
                     {
                         case "1":
                             Console.WriteLine("Deposite Amount:");
+                            amount = Convert.ToDecimal(Console.ReadLine());
+
+                            Console.WriteLine("Transaction Date (dd/mm/yyyy):");
+                            transactionDate = Convert.ToDateTime(Console.ReadLine());
                             transactions.Add(new Deposite
                             {
-                                DepositeAmount = Convert.ToDecimal(Console.ReadLine()),
+                                DepositeAmount = amount,
+                                TransactionDate = transactionDate
                             });
                             break;
                         case "2":
                             Console.WriteLine("Withdraw Amount:");
+                            amount = Convert.ToDecimal(Console.ReadLine());
+
+                            Console.WriteLine("Transaction Date (dd/mm/yyyy):");
+                            transactionDate = Convert.ToDateTime(Console.ReadLine());
 
                             transactions.Add(new Withdraw
                             {
-                                WithdrawAmount = Convert.ToDecimal(Console.ReadLine()),
+                                WithdrawAmount = amount,
+                                TransactionDate = transactionDate
                             });
                             break;
                         case "3":
                             Console.WriteLine("Select AccountType: 1.GoldAccount  2.Diamond account 3.Platinum account");
                             accountType = Console.ReadLine();
+                            Console.WriteLine("Changed Date (dd/mm/yyyy):");
+                            transactionDate = Convert.ToDateTime(Console.ReadLine());
                             transactions.Add(new ChangeAccount
                             {
-                                AccountType = GetAccountType(accountType)
+                                AccountType = GetAccountType(accountType),
+                                TransactionDate = transactionDate
                             });
                             break;
                         default:
                             isprocess = false;
+                            transactions.Add(new AddInterest());
                             break;
                     }
 
@@ -69,16 +93,16 @@ namespace _16Jan2016
 
                 bankAccount.Transactions = transactions;
 
-                var totalBalanceVisitor = new TotalBalanceVisitor(GetAccountState(accountState),
-                    InitialBalance);
-
+                var totalBalanceVisitor = new TotalBalanceVisitor();
 
 
                 bankAccount.Accept(totalBalanceVisitor);
 
-                Console.WriteLine("Cashback: " + totalBalanceVisitor.Account.CashBack);
+                Console.WriteLine("Cashback: " +  totalBalanceVisitor.Account.CashBack.ToString("#.000"));
 
-                Console.WriteLine("Total Balance: " + totalBalanceVisitor.Account.Balance);
+                Console.WriteLine("Interst: " + totalBalanceVisitor.Account.Interest.ToString("#.000"));
+
+                Console.WriteLine("Total Balance: " + totalBalanceVisitor.Account.Balance.ToString("#.000"));
 
 
             }

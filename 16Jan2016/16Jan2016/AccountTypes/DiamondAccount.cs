@@ -1,26 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace _16Jan2016
+﻿namespace _16Jan2016.AccountTypes
 {
     class DiamondAccount :IAccountType
     {
+        private const decimal InterestRate = 4;
+        private const decimal CashBackRate = 3;
+
+        private const decimal MinimumBalance =5000;
+        private const decimal Penalty = 1000;
+
+
         public decimal CalculateCashBack(decimal amount)
         {
-            return amount * 3 / 100;
+            return AccountTypeUtil.CalculateCashBack(amount, CashBackRate);
         }
 
-        public decimal CalculateInterest(decimal amount)
+        public decimal CalculateInterest(decimal amount, double NoOfDays)
         {
-            return amount * 4 / 100;
+            return AccountTypeUtil.CalculateInterest(amount, NoOfDays,InterestRate);
+
         }
 
         public decimal CalculatePenlaty(decimal balanceAmount)
         {
-            return balanceAmount < 5000 ? 1000 : 0;
+            return AccountTypeUtil.CalculatePenlaty(balanceAmount, MinimumBalance, Penalty);
         }
     }
 }

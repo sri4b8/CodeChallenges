@@ -19,6 +19,7 @@ namespace _16Jan2016
             return new ActiveState();
         }
 
+        public IAccountState CalculateInterst(Action InterestCalculation) => this;
         public IAccountState InOperative() => this;
 
 
